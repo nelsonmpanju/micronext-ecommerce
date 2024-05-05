@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="zxx" class="no-js">
+
+<head>
+	<!-- Mobile Specific Meta -->
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<!-- Favicon-->
+	<link rel="shortcut icon" href="/assets/micronext_store/micronext_store/img/fav.png">
+	<!-- Author Meta -->
+	<meta name="author" content="CodePixar">
+	<!-- Meta Description -->
+	<meta name="description" content="">
+	<!-- Meta Keyword -->
+	<meta name="keywords" content="">
+	<!-- meta character set -->
+	<meta charset="UTF-8">
+	<!-- Site Title -->
+	<title>Micronext</title>
+	<script src="/assets/micronext_store/micronext_store/js/vendor/jquery-2.2.4.min.js"></script>
+	
+	<!--
+		CSS
+		============================================= -->
+	<link rel="stylesheet" href="/assets/micronext_store/micronext_store/css/linearicons.css">
+	<link rel="stylesheet" href="/assets/micronext_store/micronext_store/css/font-awesome.min.css">
+	<link rel="stylesheet" href="/assets/micronext_store/micronext_store/css/themify-icons.css">
+	<link rel="stylesheet" href="/assets/micronext_store/micronext_store/css/bootstrap.css">
+	<link rel="stylesheet" href="/assets/micronext_store/micronext_store/css/owl.carousel.css">
+	<link rel="stylesheet" href="/assets/micronext_store/micronext_store/css/nice-select.css">
+	<link rel="stylesheet" href="/assets/micronext_store/micronext_store/css/nouislider.min.css">
+	<link rel="stylesheet" href="/assets/micronext_store/micronext_store/css/ion.rangeSlider.css" />
+	<link rel="stylesheet" href="/assets/micronext_store/micronext_store/css/ion.rangeSlider.skinFlat.css" />
+	<link rel="stylesheet" href="/assets/micronext_store/micronext_store/css/magnific-popup.css">
+	<link rel="stylesheet" href="/assets/micronext_store/micronext_store/css/main.css">
+		<!-- <link type="text/css" rel="stylesheet" href="/assets/frappe/dist/css/website.bundle.43VRAUDL.css"> -->
+	<!-- <link type="text/css" rel="stylesheet" href="/assets/frappe/dist/css/website.bundle.GEVD75K5.css"> -->
+	<!-- <link type="text/css" rel="stylesheet" href="/assets/erpnext/dist/css/erpnext-web.bundle.ZV3Z734H.css"> -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+	<script>
+		window.frappe = {};
+		frappe.ready_events = [];
+		frappe.ready = function(fn) {
+			frappe.ready_events.push(fn);
+		}
+		window.dev_server = {{ dev_server }};
+		window.socketio_port = {{ (frappe.socketio_port or 9000) }};
+		window.show_language_picker = {{ show_language_picker or 'false' }};
+	</script>
+</head>
+
+<body frappe-session-status="{{ 'logged-in' if frappe.session.user != 'Guest' else 'logged-out'}}" data-path="{{ path | e }}" {%- if template and template.endswith('.md') %} frappe-content-type="markdown" {%- endif %} class="{{ body_class or ''}}">
+	{% include "public/icons/timeless/icons.svg" %}
+    {% include "public/icons/espresso/icons.svg" %}
+    
+    {% block base_scripts %}
+    <!-- js should be loaded in body! -->
+
+    <script src="frappe-web.bundle.js"></script>
+    {% endblock %}
+
+    {% for link in web_include_js %}
+    <script src="{{ link }}"></script>
+    {% endfor %}
+
+    {% block script %}
+        {% if colocated_js %}
+            <script>{{ colocated_js }}</script>
+        {% endif %}
+    {% endblock %}
+    <!-- csrf_token -->
+    {% block body_include %}{{ body_include or "" }}{% endblock %}
+
+	<!-- Start Header Area -->
+	<header class="header_area sticky-header">
+		<div class="main_menu">
+			<nav class="navbar navbar-expand-lg navbar-light main_box">
+				<div class="container">
+					<div class="collapse navbar-collapse offset" id="navbarSupportedContent">
+						<ul class="nav navbar-nav menu_nav ml-auto" style="margin-left: 0% !important;">
+							<li class="nav-item active"><a class="nav-link" href="micronext.html">الصفحة الرئيسية</a></li>
+							<li class="nav-item"><a class="nav-link" href="category.html">المتجر</a></li>
+							<li class="nav-item"><a class="nav-link" href="login.html">تسجيل الدخول</a></li>
+							<li class="nav-item"><a class="nav-link" href="contact.html">اتصل بنا</a></li>
+						</ul>
+						<ul class="nav navbar-nav navbar-right">
+							<li class="nav-item"><a href="#" class="cart"><span class="ti-bag"></span></a></li>
+							<li class="nav-item">
+								<button class="search"><span class="lnr lnr-magnifier" id="search"></span></button>
+							</li>
+						</ul>
+					</div>
+					<!-- Brand and toggle get grouped for better mobile display -->
+
+					<!-- Collect the nav links, forms, and other content for toggling -->
+					<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+					aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+					   <span class="icon-bar"></span>
+					   <span class="icon-bar"></span>
+					   <span class="icon-bar"></span>
+				   </button>
+					<a class="navbar-brand logo_h" href="index.html"><img style="height: 85px;" src="/files/logo.png" alt=""></a>
+				</div>
+			</nav>
+		</div>
+		<div class="search_input" id="search_input_box">
+			<div class="container">
+				<form class="d-flex justify-content-between">
+					<input type="text" class="form-control" id="search_input" placeholder="ابحث هنا">
+					<button type="submit" class="btn"></button>
+					<span class="lnr lnr-cross" id="close_search" title="اغلق البحث"></span>
+				</form>
+			</div>
+		</div>
+	</header>>
+	<!-- End Header Area -->
+
+	<!-- Start Banner Area -->
+	<section class="banner-area organic-breadcrumb">
+		<div class="container">
+			<div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
+				<div class="col-first">
+					<h1>تسجيل الدخول / التسجيل</h1>
+					<nav class="d-flex align-items-center">
+						<a href="index.html">الصفحة الرئيسية<span class="lnr lnr-arrow-right"></span></a>
+						<a href="category.html">تسجيل الدخول / التسجيل</a>
+					</nav>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- End Banner Area -->
+	
+	<!--================Login Box Area =================-->
+	<section class="login_box_area section_gap">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-6">
+					<div class="login_box_img">
+						<img class="img-fluid" src="/assets/micronext_store/micronext_store/img/login.jpg" alt="">
+						<div class="hover">
+							<h4>هل أنت جديد على موقعنا؟</h4>
+							<p>هناك تقدم يحدث في العلوم والتكنولوجيا كل يوم، ومثال جيد على ذلك</p>
+							<a class="primary-btn" href="registration.html">إنشاء حساب</a>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-6">
+					<div class="login_form_inner">
+						<h3>تسجيل الدخول</h3>
+						<form class="row login_form" action="contact_process.php" method="post" id="contactForm" novalidate="novalidate">
+							<div class="col-md-12 form-group">
+								<input type="text" class="form-control" id="name" name="name" placeholder="اسم المستخدم" onfocus="this.placeholder = ''" onblur="this.placeholder = 'اسم المستخدم'">
+							</div>
+							<div class="col-md-12 form-group">
+								<input type="text" class="form-control" id="name" name="name" placeholder="كلمة المرور" onfocus="this.placeholder = ''" onblur="this.placeholder = 'كلمة المرور'">
+							</div>
+							<div class="col-md-12 form-group">
+								<div class="creat_account">
+									<input type="checkbox" id="f-option2" name="selector">
+									<label for="f-option2">تذكرني</label>
+								</div>
+							</div>
+							<div class="col-md-12 form-group">
+								<button type="submit" value="submit" class="primary-btn">تسجيل الدخول</button>
+								<a href="#">نسيت كلمة المرور؟</a>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	
+	<!--================End Login Box Area =================-->
+
+	<!-- start footer Area -->
+	<footer class="footer-area section_gap">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-3  col-md-6 col-sm-6">
+					<div class="single-footer-widget">
+						<h6>عنا</h6>
+						<p>
+							لوريم إيبسوم دولور سيت أميت، كونسيكتيتور أديبايسينغ إليت، سيد دو إيود مود تيمبور إنكيديدونت أوت لابوري دولور
+							ماغنا اليكوا.
+						</p>
+					</div>
+				</div>
+				<div class="col-lg-4  col-md-6 col-sm-6">
+					<div class="single-footer-widget">
+						<h6>النشرة الإخبارية</h6>
+						<p>ابق على اطلاع مع أحدثنا</p>
+						<div class="" id="mc_embed_signup">
+							<form target="_blank" novalidate="true" action="https://spondonit.us12.list-manage.com/subscribe/post?u=1462626880ade1ac87bd9c93a&amp;id=92a4423d01"
+								method="get" class="form-inline">
+								<div class="d-flex flex-row">
+									<input class="form-control" name="EMAIL" placeholder="أدخل البريد الإلكتروني" onfocus="this.placeholder = ''" onblur="this.placeholder = 'أدخل البريد الإلكتروني '"
+										required="" type="email">
+									<button class="click-btn btn btn-default"><i class="fa fa-long-arrow-right" aria-hidden="true"></i></button>
+									<div style="position: absolute; left: -5000px;">
+										<input name="b_36c4fd991d266f23781ded980_aefe40901a" tabindex="-1" value="" type="text">
+									</div>
+								</div>
+								<div class="info"></div>
+							</form>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-2 col-md-6 col-sm-6">
+					<div class="single-footer-widget">
+						<h6>تابعنا</h6>
+						<p>دعنا نكون اجتماعيين</p>
+						<div class="footer-social d-flex align-items-center">
+							<a href="#"><i class="fa fa-facebook"></i></a>
+							<a href="#"><i class="fa fa-twitter"></i></a>
+							<a href="#"><i class="fa fa-dribbble"></i></a>
+							<a href="#"><i class="fa fa-behance"></i></a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="footer-bottom d-flex justify-content-center align-items-center flex-wrap">
+				<p class="footer-text m-0">
+					حقوق النشر &copy; <script>document.write(new Date().getFullYear());</script> جميع الحقوق محفوظة | تم إنشاء هذا القالب بـ <i class="fa fa-heart-o" aria-hidden="true"></i> بواسطة <a href="https://colorlib.com" target="_blank">Colorlib</a>
+				</p>
+			</div>
+		</div>
+	</footer>
+	
+	<!-- End footer Area -->
+
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4"
+	 crossorigin="anonymous"></script>
+	<script src="/assets/micronext_store/micronext_store/js/vendor/bootstrap.min.js"></script>
+	<script src="/assets/micronext_store/micronext_store/js/jquery.ajaxchimp.min.js"></script>
+	<script src="/assets/micronext_store/micronext_store/js/jquery.nice-select.min.js"></script>
+	<script src="/assets/micronext_store/micronext_store/js/jquery.sticky.js"></script>
+	<script src="/assets/micronext_store/micronext_store/js/nouislider.min.js"></script>
+	<script src="/assets/micronext_store/micronext_store/js/countdown.js"></script>
+	<script src="/assets/micronext_store/micronext_store/js/jquery.magnific-popup.min.js"></script>
+	<script src="/assets/micronext_store/micronext_store/js/owl.carousel.min.js"></script>
+	<!--gmaps Js-->
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjCGmQ0Uq4exrzdcL6rvxywDDOvfAu6eE"></script>
+	<script src="/assets/micronext_store/micronext_store/js/gmaps.min.js"></script>
+	<script src="/assets/micronext_store/micronext_store/js/main.js"></script>
+</body>
+
+</html>
